@@ -5,6 +5,7 @@ import Feedback from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statistics/statistics';
 import Wrapper from './Wrapper/wrapper';
 import Section from './Section/Section';
+import Notification from './Notification/Notification';
 class App extends Component {
   state = {
     good: 0,
@@ -13,7 +14,7 @@ class App extends Component {
   };
   handleClick = state => {
     this.setState(prevState => ({
-      [state]: prevState[this.state] + 1,
+      [state]: prevState[state] + 1,
     }));
   };
 
@@ -36,13 +37,17 @@ class App extends Component {
           <Feedback options={options} onFeedback={this.handleClick} />
         </Section>
         <Section title="Statistics">
-          <Statistics
-            good={good}
-            netural={neutral}
-            bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {this.countTotalFeedback() > 0 ? (
+            <Statistics
+              good={good}
+              netural={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </Wrapper>
     );
