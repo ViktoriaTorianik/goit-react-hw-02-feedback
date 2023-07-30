@@ -21,7 +21,7 @@ const Statistics = ({ good, netural, bad, total, positivePercentage }) => {
           <p>Total: {total}</p>
         </StatisticParagraph>
         <StatisticParagraph>
-          <p>Positive Feedback: {positivePercentage}</p>
+          <p>Positive Feedback: {positivePercentage} %</p>
         </StatisticParagraph>
       </StatisticList>
     </div>
