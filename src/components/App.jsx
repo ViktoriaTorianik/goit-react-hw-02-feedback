@@ -30,7 +30,6 @@ class App extends Component {
   render() {
     const options = Object.keys(this.state);
     const { good, neutral, bad } = this.state;
-    console.log(options);
     return (
       <Wrapper>
         <Section title="Please leave feedback">
